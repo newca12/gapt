@@ -1,5 +1,5 @@
 ## GAPT: General Architecture for Proof Theory 
-[![Build Status](https://travis-ci.org/gapt/gapt.svg?branch=master)](https://travis-ci.org/gapt/gapt) [![Coverage Status](https://coveralls.io/repos/gapt/gapt/badge.svg?branch=master)](https://coveralls.io/r/gapt/gapt?branch=master)
+[![Build Status](https://travis-ci.org/newca12/gapt.svg?branch=code-coverage)](https://travis-ci.org/newca12/gapt) [![Coverage Status](https://coveralls.io/repos/newca12/gapt/badge.svg?branch=code-coverage)](https://coveralls.io/r/newca12/gapt?branch=code-coverage) [![Ohloh](http://www.openhub.net/p/gapt/widgets/project_thin_badge.gif)](https://www.openhub.net/p/gapt)
 
 GAPT is a proof theory framework developed primarily at the Vienna University
 of Technology. GAPT contains data structures, algorithms, parsers and other
