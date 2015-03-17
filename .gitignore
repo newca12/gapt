@@ -30,3 +30,12 @@ doc/*.out
 .project
 .classpath
 .cache
+.settings
+.target
+.worksheet
+
+#OSX
+.DS_Store
+
+#others
+bin
