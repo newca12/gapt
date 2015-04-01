@@ -211,7 +211,7 @@ class SExpressionParser extends Parsers {
         xs match {
           case lisp.List( elems ) :: Nil => lisp.List( x :: elems )
           case cdr :: Nil                => lisp.Cons( x, cdr )
-          case Nil                       => throw new Exception( "Error during cons parsing - subrule didn't pass cdr!" )
+          case _                         => throw new Exception( "Error during cons parsing - subrule didn't pass cdr!" )
         }
       } else {
         lisp.List( x :: xs )
@@ -244,6 +244,8 @@ class SExpressionParser extends Parsers {
         //val s : Scanners
         //println(r)
         phrase( lisp_file )( ListReader( r ) )
+      case tokenizer.NoSuccess( msg, input ) =>
+        throw new Exception( "Error parsing S-expression '" + in + "' at position " + input.pos + ". Error message: " + msg )
     }
   }
   def parse( in: Reader[Char] ) = {
@@ -252,6 +254,8 @@ class SExpressionParser extends Parsers {
         val r = result filter ( _ match { case COMMENT => false; case _ => true } )
         //println(r)
         phrase( lisp_file )( ListReader( r ) )
+      case tokenizer.NoSuccess( msg, input ) =>
+        throw new Exception( "Error parsing S-expression '" + in + "' at position " + input.pos + ". Error message: " + msg )
     }
   }
 }

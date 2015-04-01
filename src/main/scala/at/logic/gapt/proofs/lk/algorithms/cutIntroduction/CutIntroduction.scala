@@ -585,8 +585,8 @@ object CutIntroduction extends Logger {
             if ( freeVars.intersect( variables ).nonEmpty ) {
               val i_f = instantiateAll( formula, termlist )
               val f = formula match {
-                case FOLExVar( _ )  => FOLNeg( i_f )
-                case FOLAllVar( _ ) => i_f
+                case FOLExVar( _, _ )  => FOLNeg( i_f )
+                case FOLAllVar( _, _ ) => i_f
               }
               f :: acc
             } else acc
@@ -636,12 +636,12 @@ object CutIntroduction extends Logger {
     // As an efficiency improvement, we treat the non-quantified part of the end-sequent
     // separately (since it never needs to be instantiated).
     val quantPart = FSequent( endSequent.antecedent.filter {
-      case FOLAllVar( _ ) => true
-      case _              => false
+      case FOLAllVar( _, _ ) => true
+      case _                 => false
     },
       endSequent.succedent.filter {
-        case FOLExVar( _ ) => true
-        case _             => false
+        case FOLExVar( _, _ ) => true
+        case _                => false
       } )
 
     // In our setting, we work with a sequent instead of a formula F as in the paper.

@@ -255,7 +255,7 @@ private class FOLExQ extends FOLLambdaConst( ExistsSymbol, ->( ->( Ti, To ), To 
 private object FOLExQ {
   def apply() = new FOLExQ
   def unapply( v: FOLLambdaConst ) = v match {
-    case vo: FOLExQ => Some()
+    case vo: FOLExQ => Some
     case _          => None
   }
 }
@@ -264,7 +264,7 @@ private class FOLAllQ extends FOLLambdaConst( ForallSymbol, ->( ->( Ti, To ), To
 private object FOLAllQ {
   def apply() = new FOLAllQ
   def unapply( v: FOLLambdaConst ) = v match {
-    case vo: FOLAllQ => Some()
+    case vo: FOLAllQ => Some
     case _           => None
   }
 }

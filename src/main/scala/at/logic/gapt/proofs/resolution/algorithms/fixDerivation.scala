@@ -31,7 +31,7 @@ import scala.collection.immutable.HashMap
  */
 
 object fixDerivation extends Logger {
-  private def getSymmetryMap( to: Pair[Seq[FOLFormula], Seq[FOLFormula]], from: Pair[Seq[FOLFormula], Seq[FOLFormula]] ) = {
+  private def getSymmetryMap( to: Tuple2[Seq[FOLFormula], Seq[FOLFormula]], from: Tuple2[Seq[FOLFormula], Seq[FOLFormula]] ) = {
     var err = false
     def createMap( from: Seq[FOLFormula], to: Seq[FOLFormula] ) = {
       ( from zip from.indices ).foldLeft( HashMap[Int, Int]() ) {
@@ -60,7 +60,7 @@ object fixDerivation extends Logger {
     ( seq.antecedent.map( f => f.asInstanceOf[FOLFormula] ), seq.succedent.map( f => f.asInstanceOf[FOLFormula] ) )
   def canDeriveBySymmetry( to: FClause, from: FSequent ): Boolean =
     canDeriveBySymmetry( convertSequent( to.toFSequent ), convertSequent( from ) )
-  def canDeriveBySymmetry( to: Pair[Seq[FOLFormula], Seq[FOLFormula]], from: Pair[Seq[FOLFormula], Seq[FOLFormula]] ): Boolean = getSymmetryMap( to, from ) match {
+  def canDeriveBySymmetry( to: Tuple2[Seq[FOLFormula], Seq[FOLFormula]], from: Tuple2[Seq[FOLFormula], Seq[FOLFormula]] ): Boolean = getSymmetryMap( to, from ) match {
     case Some( _ ) => true
     case None      => false
   }

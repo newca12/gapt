@@ -10,8 +10,7 @@ import scala.collection.immutable._
  * MultiExpansionSequent and provides human-readable formatting of this data.
  */
 object getStatistics {
-  class ESStats( _1: HashMap[HOLFormula, Int], _2: HashMap[HOLFormula, Int] )
-      extends Tuple2[HashMap[HOLFormula, Int], HashMap[HOLFormula, Int]]( _1, _2 ) {
+  class ESStats( _1: HashMap[HOLFormula, Int], _2: HashMap[HOLFormula, Int] ) {
 
     override def toString = {
       val as = _1.foldLeft( "antecedent:\n" )(
