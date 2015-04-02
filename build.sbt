@@ -26,8 +26,19 @@ lazy val commonSettings = Seq(
     .setPreference(DoubleIndentClassDeclaration, true)
     .setPreference(SpaceInsideParentheses, true))
 
+lazy val publishingSettings = Seq(
+  publishMavenStyle := true,
+  publishTo := Some(Resolver.file("file",  new File("PATH_TO_LOCAL_newca12.github.com/snapshots"))),
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false })
+
+lazy val noPublishingSettings = Seq(
+  publishArtifact := false,
+  publishTo := Some(Resolver.file("Unused transient repository", file("target/unusedrepo"))))
+
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
+  settings(publishingSettings: _*).
   disablePlugins(JUnitXmlReportPlugin).
   settings(
     name := "gapt",
